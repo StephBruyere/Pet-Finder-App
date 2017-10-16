@@ -83,7 +83,7 @@ var tableArray = [
 },
 {
 "name": "Pancake",
-"photo" "/assets/pug.jpeg",
+"photo": "/assets/pug.jpeg",
 "scores": [
 "4",
 "4",
@@ -99,7 +99,7 @@ var tableArray = [
 },
 {
 "name": "Sergent",
-"photo": "/assets/shepard.jpeg",,
+"photo": "/assets/shepard.jpeg",
 "scores": [
 "4",
 "3",
@@ -161,3 +161,6 @@ var tableArray = [
 "2"
 ]
 }
+];
+
+module.exports = tableArray;
