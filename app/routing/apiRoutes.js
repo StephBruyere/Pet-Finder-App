@@ -1,6 +1,7 @@
 //LINKS TO DATA SOURCE
 var path = require('path');
-var petList = require("../data/friends.js");
+var petList = require("../data/friends");
+
 //ROUTING
 module.exports = function(app){
 app.get("/api/friends", function(req,res){
@@ -29,7 +30,7 @@ app.post("/api/friends", function(res, req) {
       }
     }
 
-var dog = friends[match];
+var dog = friends(match);
 res.json(dog);
 petList.push(req.body);
 });

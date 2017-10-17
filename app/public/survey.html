@@ -171,25 +171,8 @@
 
 <!--Javascript Stylesheet -->
 <script type="text/javascript">
-$(document).ready(function() {
-    $("#submitBtn").on("click", function(event) {
+    $("#submit").on("click", function(event) {
         event.preventDefault();
-
-        function validateForm() {
-            var isValid = true;
-            $('.validate').each(function() {
-                if ($(this).val() === '') {
-                    isValid = false;
-                }
-            });
-            $('.browser-default').each(function() {
-                if ($(this).val() === "") {
-                    isValid = false;
-                }
-            });
-            return isValid;
-        }
-        if (validateForm() == true) {
             var userInput = {
                 name: $('#name').val().trim(),
                 photo: $('#photo').val().trim(),
@@ -206,15 +189,13 @@ $(document).ready(function() {
                     $('#q10').val().trim(),
                 ] 
             };
-
+            console.log(userInput);
             var currentURL = window.location.origin;
-            $.post(currentURL + "/api/friend", userInput, function(data) {
+            $.post(currentURL + "/api/friends", userInput, function(data) {
                 $("#petName").html(data.name);
                 $("#petPhoto").attr("src", data.photo);
                 $('#myModal').modal();
             });
-console.log(userInput);
-            
 
             $("#restart").on("click", function(event) {
                 event.preventDefault();
@@ -231,8 +212,8 @@ console.log(userInput);
                 $('#q9').val("");
                 $('#q10').val("");
             });
-        }
-        // return false;
-    });
-});
+        });
+    
+        
+
 </script>
