@@ -31,7 +31,7 @@
             <h4>Add your photo</h4>
             <input type="text" name="" id="photo" class="form-control" placeholder="required" required>
             <hr>
-            <h3><strong>Question 1</strong></h3>
+            <h3>Question 1</h3>
             <h4>A dog is a protector first, and a pet second</h4>
             <select class="answer" id="q1">
                 <option value="" disabled selected>Choose your option</option>
@@ -41,6 +41,7 @@
                 <option value="4">4</option>
                 <option value="5">5 (Strongly Agree)</option>
             </select>
+
             <h3>Question 2</h3>
             <h4>I find taking my dog to the groomers is a normal part of owning a pet</h4>
             <select class="answer" id="q2">
@@ -51,6 +52,7 @@
                 <option value="4">4</option>
                 <option value="5">5 (Strongly Agree)</option>
             </select>
+
             <h3>Question 3</h3>
             <h4>I have a large yard, or am able to exercise my dog regularly.</h4>
             <select class="answer" id="q3">
@@ -62,7 +64,6 @@
                 <option value="5">5 (Strongly Agree)</option>
             </select>
 
-
             <h3>Question 4</h3>
             <h4>I'm partial to large breeds over small dogs</h4>
             <select class="answer" id="q4">
@@ -73,6 +74,7 @@
                 <option value="4">4</option>
                 <option value="5">5 (Strongly Agree)</option>
             </select>
+
             <h3>Question 5</h3>
             <h4>Shedding? No thanks!</h4>
             <select class="answer" id="q5">
@@ -83,6 +85,7 @@
                 <option value="4">4</option>
                 <option value="5">5 (Strongly Agree)</option>
             </select>
+
             <h3>Question 6</h3>
             <h4>I need a dog that is good with other pets.</h4>
             <select class="answer" id="q6">
@@ -93,6 +96,7 @@
                 <option value="4">4</option>
                 <option value="5">5 (Strongly Agree)</option>
             </select>
+
             <h3>Question 7</h3>
             <h4>My dog should be good with children of all ages.</h4>
             <select class="answer" id="q7">
@@ -114,20 +118,21 @@
                 <option value="4">4</option>
                 <option value="5">5 (Strongly Agree)</option>
             </select>
-            <h3><strong>Question 9</strong></h3>
+
+            <h3>Question 9</h3>
             <h4>I perfer short haired breeds to long haired dogs.</h4>
-            <select class="answer" " id="q9 ">
+            <select class="answer" id="q9">
                 <option value="" disabled selected>Choose your option</option>
-                <option value="1 ">1 (Strongly Disagree)</option>
-                <option value="2 ">2</option>
-                <option value="3 ">3</option>
-                <option value="4 ">4</option>
-                <option value="5 ">5 (Strongly Agree)</option>
+                <option value="1">1 (Strongly Disagree)</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5 (Strongly Agree)</option>
             </select>
 
-            <h3><strong>Question 10</strong></h3>
+            <h3>Question 10</h3>
             <h4>I'm high energy, and need a dog that can keep up!</h4>
-            <select class="answer " id="q10 ">
+            <select class="answer" id="q10">
                 <option value="" disabled selected>Choose your option</option>
                 <option value="1 ">1 (Strongly Disagree)</option>
                 <option value="2 ">2</option>
@@ -139,64 +144,97 @@
             <br>
             <br>
             <!-- Submit Button -->
-            <button type="submit " class="btn btn-primary btn-lg btn-block " id="submit "> Submit</button>
+            <button type="submit" data-toggle="modal" data-target="#myModal" class="btn btn-primary btn-lg btn-block " id="submit">Submit</button>
             <hr>
-             </div>
+        </div>
 
-             <div id="myModal" class="modal fade" role="dialog">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">X</button>
-				<h2 class="modal-title">Meet your best friend</h2>
-			</div>
-			<div class="modal-body">
-				<h2 id="petName"></h2>
-				<img id="petName" src="https://scontent.fcmh1-1.fna.fbcdn.net/v/t1.0-9/21761837_1910106965673076_6707348720085928446_n.jpg?oh=834f1023bc7d177d0052af6ee7543c94&oe=5A74D9D9" onError="https://scontent.fcmh1-1.fna.fbcdn.net/v/t1.0-9/21761837_1910106965673076_6707348720085928446_n.jpg?oh=834f1023bc7d177d0052af6ee7543c94&oe=5A74D9D9'" width=500px alt="Default Dog">
-			</div>
-		</div>
-	</div>
-</div>
-         </body>
-            <footer class="footer ">
-                <div class="container ">
-        		<p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/StephBruyere/friendfinder ">GitHub Repo</a></p>
-      			</div>
+<!-- Modal -->
+ <div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h3 class="modal-title">Time to Meet your New Best Friend</h3>
+            </div>
+            <div class="modal-body">
+              <div id="petName">No Match Try Again</div>
+              <img id="petPhoto" src="assets/images/chesa.jpg"  width = 150px>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal"class="btn btn-primary" id="restart">Play Again?</button>
+            </div>
+        </div>
+    </div>
+
+   </body>
+</html>
 
 <!--Javascript Stylesheet -->
    	<script type="text/javascript">
+ $(document).ready(function() {
+    $("#submitBtn").on("click", function(event) {
+         event.preventDefault();
+        function validateForm() {
+            var isValid = true;
+            $('.validate').each(function() {
+                if ($(this).val() === ''){
+                    isValid = false;
+                }
+            });
+            $('.browser-default').each(function() {
+                if ($(this).val() === ""){
+                    isValid = false;
+                }
+            });
+            return isValid;
+        }
+        if (validateForm() == true) {
+       var userInput = {
+    name: $('#name').val().trim(),
+    photo: $('#photo').val().trim(),
+    score: [
+    $('#q1').val().trim(),
+    $('#q2').val().trim(),
+    $('#q3').val().trim(),
+    $('#q4').val().trim(),
+    $('#q5').val().trim(),
+    $('#q6').val().trim(),
+    $('#q7').val().trim(),
+    $('#q8').val().trim(),
+    $('#q9').val().trim(),
+    $('#q10').val().trim(),
+    ]};
+console.log(userInput); 
+ var currentURL = window.location.origin;
+$.post(currentURL + "/api/friends", userInput, function(data) {
 
-     $("#submit").on("click", function(event) {
+           $("#petName").replaceWith(data.name);
+        $("#petPhoto").attr("src", data.photo);
+            });
+            // Show the modal with the best match   
+            //clear form after submission
+          $("#restart").on("click", function(event) {
         event.preventDefault();
-
-        var userInput = {
-                name: $('#name').val().trim(),
-                photo: $('#photo').val().trim(),
-                answerArray: [
-                $('#q1').val().trim(),
-                $('#q2').val().trim(),
-                $('#q3').val().trim(),
-                $('#q4').val().trim(),
-                $('#q5').val().trim(),
-                $('#q6').val().trim(),
-                $('#q7').val().trim(),
-                $('#q8').val().trim(),
-                $('#q9').val().trim(),
-                $('#q10').val().trim()
-                ]
-            };
-
-$.post("/api/data/friends", userInput)
-
-.done(function(data) {
-    $("#petName").html(data.name);
-    $("#petName").attr("src", data.photo);
-    $("#myModal").modal("show");
+            $('#name').val("");
+            $('#photo').val("");
+            $('#q1').val("");
+            $('#q2').val("");
+            $('#q3').val("");
+            $('#q4').val("");
+            $('#q5').val("");
+            $('#q6').val("");
+            $('#q7').val("");
+            $('#q8').val("");
+            $('#q9').val("");
+            $('#q10').val("");
+        });}
+        // return false;
+    });
 });
-});	
+
+       
 </script>
-            </footer>
-            </html>
+            
        
         
   

@@ -1,6 +1,6 @@
 //TABLE DATA
 
-var tableArray = [
+var petList = [
 {
 "name": "Peanut",
 "photo": "/assets/beagle.jpeg",
@@ -163,4 +163,4 @@ var tableArray = [
 }
 ];
 
-module.exports = tableArray;
+module.exports = petList;

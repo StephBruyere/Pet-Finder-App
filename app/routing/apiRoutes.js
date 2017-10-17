@@ -1,37 +1,38 @@
 //LINKS TO DATA SOURCE
-var tableData = require("../app/data/friends");
-
+var path = require('path');
+var friends = require("../data/friends");
 //ROUTING
-module.exports = function (app) {
-	
-	app.get("/api/friends", function(req, res) {
-		res.json(tableData);
-	});
+module.exports = function(app){
+app.get("/api/friends", function(req,res){
+		res.json(friends);
+  });
 
 //POST REQUEST
 app.post("/api/friends", function(res, req) {
-	var reqScore = req.body.score;
-	var scoreArray = [];
-	var count = 0;
-	var match = 0;
+    var newScore = req.body.scores;
+    var arr = [];
+    var count = 0;
+    var match = 0;
 
-	for (var i = 0; i < tableData.length; i++) {
+	for (var i = 0; i < friends.length; i++) {
 		var diff = 0;
-		for (var j = 0; j < reqScore.length; j++) {
-			diff +=(MATH.abs(parseInt(tableData[i].score[j]) - parseInt(reqScore[j])));
+		for (var j = 0; j < newScore.length; j++) {
+			diff +=(MATH.abs(parseInt(friends[i].scores[j]) - parseInt(newScore[j])));
 		}
-		scoreArray.push(diff);
+		arr.push(diff);
 	}
 
-    for(var i=0; i<scoreArray.length; i++){
-      if(scoreArray[i] <= scoreArray[match]){
+    for(var i=0; i< arr.length; i++){
+      if(arr[i] <= arr[match]){
         match = i;
       }
     }
 
-
-var bff = tableData[match];
-res.json(bff);
-tableData.push(req.body);
+var dog = friends[match];
+res.json(dog);
+friends.push(req.body);
 });
 };
+
+console.log(friends);
+console.log("test");
