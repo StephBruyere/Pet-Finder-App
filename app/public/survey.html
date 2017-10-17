@@ -157,8 +157,8 @@
                 <h3 class="modal-title">Time to Meet your New Best Friend</h3>
             </div>
             <div class="modal-body">
-              <div id="petName">No Match Try Again</div>
-              <img id="petPhoto" src="assets/images/chesa.jpg"  width = 150px>
+              <div id="petName"></div>
+              <img id="petPhoto" src=""  width = 150px>
             </div>
             <div class="modal-footer">
                 <button type="button" data-dismiss="modal"class="btn btn-primary" id="restart">Play Again?</button>
@@ -170,71 +170,69 @@
 </html>
 
 <!--Javascript Stylesheet -->
-   	<script type="text/javascript">
- $(document).ready(function() {
+<script type="text/javascript">
+$(document).ready(function() {
     $("#submitBtn").on("click", function(event) {
-         event.preventDefault();
+        event.preventDefault();
+
         function validateForm() {
             var isValid = true;
             $('.validate').each(function() {
-                if ($(this).val() === ''){
+                if ($(this).val() === '') {
                     isValid = false;
                 }
             });
             $('.browser-default').each(function() {
-                if ($(this).val() === ""){
+                if ($(this).val() === "") {
                     isValid = false;
                 }
             });
             return isValid;
         }
         if (validateForm() == true) {
-       var userInput = {
-    name: $('#name').val().trim(),
-    photo: $('#photo').val().trim(),
-    score: [
-    $('#q1').val().trim(),
-    $('#q2').val().trim(),
-    $('#q3').val().trim(),
-    $('#q4').val().trim(),
-    $('#q5').val().trim(),
-    $('#q6').val().trim(),
-    $('#q7').val().trim(),
-    $('#q8').val().trim(),
-    $('#q9').val().trim(),
-    $('#q10').val().trim(),
-    ]};
-console.log(userInput); 
- var currentURL = window.location.origin;
-$.post(currentURL + "/api/friends", userInput, function(data) {
+            var userInput = {
+                name: $('#name').val().trim(),
+                photo: $('#photo').val().trim(),
+                score: [
+                    $('#q1').val().trim(),
+                    $('#q2').val().trim(),
+                    $('#q3').val().trim(),
+                    $('#q4').val().trim(),
+                    $('#q5').val().trim(),
+                    $('#q6').val().trim(),
+                    $('#q7').val().trim(),
+                    $('#q8').val().trim(),
+                    $('#q9').val().trim(),
+                    $('#q10').val().trim(),
+                ] 
+            };
 
-           $("#petName").replaceWith(data.name);
-        $("#petPhoto").attr("src", data.photo);
+            var currentURL = window.location.origin;
+            $.post(currentURL + "/api/friend", userInput, function(data) {
+                $("#petName").html(data.name);
+                $("#petPhoto").attr("src", data.photo);
+                $('#myModal').modal();
             });
-            // Show the modal with the best match   
-            //clear form after submission
-          $("#restart").on("click", function(event) {
-        event.preventDefault();
-            $('#name').val("");
-            $('#photo').val("");
-            $('#q1').val("");
-            $('#q2').val("");
-            $('#q3').val("");
-            $('#q4').val("");
-            $('#q5').val("");
-            $('#q6').val("");
-            $('#q7').val("");
-            $('#q8').val("");
-            $('#q9').val("");
-            $('#q10').val("");
-        });}
+console.log(userInput);
+            
+
+            $("#restart").on("click", function(event) {
+                event.preventDefault();
+                $('#name').val("");
+                $('#photo').val("");
+                $('#q1').val("");
+                $('#q2').val("");
+                $('#q3').val("");
+                $('#q4').val("");
+                $('#q5').val("");
+                $('#q6').val("");
+                $('#q7').val("");
+                $('#q8').val("");
+                $('#q9').val("");
+                $('#q10').val("");
+            });
+        }
         // return false;
     });
 });
-
-       
 </script>
-            
-       
-        
-  
