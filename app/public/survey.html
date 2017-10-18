@@ -171,6 +171,7 @@
 
 <!--Javascript Stylesheet -->
 <script type="text/javascript">
+$(document).ready(function() {
     $("#submit").on("click", function(event) {
         event.preventDefault();
             var userInput = {
@@ -195,8 +196,9 @@
                 $("#petName").html(data.name);
                 $("#petPhoto").attr("src", data.photo);
                 $('#myModal').modal();
+                console.log(data.name);
             });
-
+            
             $("#restart").on("click", function(event) {
                 event.preventDefault();
                 $('#name').val("");
@@ -213,7 +215,7 @@
                 $('#q10').val("");
             });
         });
-    
+    });
         
 
 </script>

@@ -1,6 +1,6 @@
 //LINKS TO DATA SOURCE
 var path = require('path');
-var petList = require("../data/friends");
+var petList = require("../data/friends.js");
 
 //ROUTING
 module.exports = function(app){
@@ -10,8 +10,8 @@ app.get("/api/friends", function(req,res){
 
 //POST REQUEST
 app.post("/api/friends", function(res, req) {
-    var newPlayer = req.body;
-    var newScore = newPlayer.scores;
+    var newScore = req.body.scores;
+    console.log(res.body.scores);
     var arr = [];
     var count = 0;
     var match = 0;
@@ -30,7 +30,7 @@ app.post("/api/friends", function(res, req) {
       }
     }
 
-var dog = friends(match);
+var dog = petList[match];
 res.json(dog);
 petList.push(req.body);
 });
